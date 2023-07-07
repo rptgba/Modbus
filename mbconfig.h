@@ -9,15 +9,19 @@
 /**     V1.0.0  2015-07-18      尹家军     创建文件                          **/
 /**     V1.0.1  2018-09-21      尹家军     添加Modbus ASCII代码              **/
 /**     V1.1.0  2019-04-17      尹家军     修改主站代码结构，封装主站从站对象**/
-/**                                                                          **/
+/**     V1.0.0  2023-07-06      翁文杰     移植文件                                                                      **/
 /******************************************************************************/ 
 
 
 #ifndef _MB_CONFIG_H
 #define _MB_CONFIG_H
+#include "stm32f4xx_hal.h"
+
+
+
 
 /*定义是否使能RTU主站功能，0为禁用，1为使能*/
-#define MB_RTU_MASTER_ENABLED		(1)
+#define MB_RTU_MASTER_ENABLED		(0)
 
 /*定义是否使能RTU从站功能，0为禁用，1为使能*/
 #define MB_RTU_SLAVE_ENABLED		(1)
@@ -64,18 +68,19 @@
 #if ((MB_RTU_SLAVE_ENABLED > (0))||(MB_TCP_SERVER_ENABLED > (0))||(MB_ASCII_SLAVE_ENABLED > (0)))
 
 #define CoilStartAddress        0
-#define CoilEndAddress          0
+#define CoilEndAddress          3
 
-#define StatusStartAddress        0
-#define StatusEndAddress          0
+#define DiscreteStartAddress        0
+#define DiscreteEndAddress          15
 
-#define HoldingResterStartAddress       0
-#define HoldingResterEndAddress         0
+#define HoldingRegisterStartAddress       0
+#define HoldingRegisterEndAddress         41
 
 #define InputResterStartAddress       0
-#define InputResterEndAddress         0
+#define InputResterEndAddress         17
 
 #endif
+
 
 #endif
 /*********** (C) COPYRIGHT 1999-2019 Moonan Technology *********END OF FILE****/

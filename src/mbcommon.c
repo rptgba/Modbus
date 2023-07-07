@@ -11,7 +11,9 @@
 /******************************************************************************/ 
 
 #include "mbcommon.h"
-
+#if  defined ( __clang__ )
+#define __weak   __attribute__((weak))
+#endif /* __weak */
 /*将接收到的写单个Coil值转化为布尔量，对应0x05功能码*/
 bool CovertSingleCommandCoilToBoolStatus(uint16_t coilValue,bool value)
 {
